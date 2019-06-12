@@ -52,7 +52,6 @@ class App extends React.Component {
         break;
 
       case 'negative':
-      //FIX MEEEEEE
         this.plusMinusPressed()
         break;
 
@@ -152,22 +151,32 @@ class App extends React.Component {
   }
 
   plusMinusPressed(){
+    //should remove zero
     if(this.state.positive === true) {
-      this.setState({
-        positive: false,
-        result: '-' + this.state.result,
-      })
-    }else{
-      try {
+      if(this.state.result === 0){
         this.setState({
-          positive:true,
-          result: this.state.result.substr(1)
+          positive: false,
+          result: '-'
         })
-      } catch {
-        this.catchError()
-      }  
-    }
+      } else {
+        this.setState({
+          positive: false,
+          result: '-' + this.state.result
+        })
+      }
+    } else {
+        if(this.state.result === '-'){
+          this.clearResult()
+        } else {
+          this.setState({
+            positive: true,
+            result: this.state.result.substr(1)
+          })
+        }
+    }      
   }
+  
+
 
   pressPercentButton(){
       this.setState({
