@@ -62,15 +62,22 @@ class App extends React.Component {
         result: "-" + this.state.result,
       })
     }else{
-      this.setState({
-        positive:true,
-        result: this.state.result.substr(1)
-      })
+      try {
+        this.setState({
+          positive:true,
+          result: this.state.result.substr(1)
+        })
+      } catch {
+        this.setState({
+          result: 'ERROR'
+        })
+      }  
     }
   }
 
   clearResult() {
     this.setState({
+      positive: true,
       result: ""
     })
   }
