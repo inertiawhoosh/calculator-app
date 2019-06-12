@@ -19,19 +19,7 @@ class App extends React.Component {
   //clear state if I press a number after =
 
   onClick = button => {
-    if (this.state.result === 'ERROR') {
-      if (button === 'negative'){
-        this.setState({
-          positive: false,
-          result: '-'
-        })
-      } else {
-        this.setState({
-          positive: true,
-          result: button
-        })
-      }
-    }else if(this.state.result === 0){
+    if(this.state.result === 0){
       if(button === 'AC'){
          this.clearResult()
       } else if(button === '='){
@@ -43,21 +31,34 @@ class App extends React.Component {
           result: '' + button
         })
       }
-    } 
-      else if(button === 'AC'){
-      this.clearResult()
-    }else if(this.state.result.length > 6){
-      this.catchError()
-    }else if(button ==='negative'){
-      this.plusMinusPressed()
-    }else if(button === '='){
-      this.equalButtonPressed()
-    } else if(button === '%'){
-      this.pressPercentButton()
     } else {
-      this.setState({
-        result: this.state.result + button
-      })
+      if (this.state.result === 'ERROR') {
+        if (button === 'negative'){
+          this.setState({
+            positive: false,
+            result: '-'
+          })
+        } else {
+          this.setState({
+            positive: true,
+            result: button
+          })
+        }
+      }else if(button === 'AC'){
+        this.clearResult()
+      }else if(this.state.result.length > 6){
+        this.catchError()
+      }else if(button ==='negative'){
+        this.plusMinusPressed()
+      }else if(button === '='){
+        this.equalButtonPressed()
+      } else if(button === '%'){
+        this.pressPercentButton()
+      } else {
+        this.setState({
+          result: this.state.result + button
+        })
+      }
     }
   }
 
