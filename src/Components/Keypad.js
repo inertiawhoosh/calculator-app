@@ -6,7 +6,7 @@ class Keypad extends React.Component {
 		return (
 		    <div className="keypad">
 		        <div className="top-keys">
-		            <button className="calc-key clear">AC</button>
+		            <button className="calc-key clear" onClick={e => this.props.onClick('AC')}>AC</button>
 		            <button className="calc-key plus-minus">+/-</button>
 		            <button className="calc-key percent">%</button>
 		        </div>

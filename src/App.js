@@ -12,10 +12,13 @@ class App extends React.Component {
   }
 
   onClick = button => {
-    this.setState({
-      result: this.state.result + button
-    })
-
+    if(button == "AC"){
+      this.clearResult()
+    } else {
+      this.setState({
+        result: this.state.result + button
+      })
+    }
   }
   //need functions for: 
   //equalButtonPressed
