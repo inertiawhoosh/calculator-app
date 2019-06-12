@@ -13,7 +13,8 @@ The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
 ###Limitations
-1. Eval() is not always the most secure method, however for speed of build in this case I opted to use it because there is no database
+1. Eval() is not always the most secure method, however for speed of build in this case I opted to use it
+2. If a number with too many digits is entered or returned users will receive an `ERROR`
 
 
 

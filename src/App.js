@@ -9,14 +9,14 @@ class App extends React.Component {
 
     this.state = {
       positive: true,
-      result: 0
+      result: 0,
     }
   }
 
   //updates to make
   //doesn't allow users to click more than one operator in a row
   //clears screen after an operator
-  //clear state if I press a number after =
+  //clear state if I press a number after doing an equation
 
   onClick = button => {
     if(this.state.result === 0){
@@ -28,7 +28,15 @@ class App extends React.Component {
         this.plusMinusPressed()
       } else if(button ==="%"){
         this.pressPercentButton()
-      } else {
+      } 
+      else if( button === "+" ||
+        button === "-" || 
+        button === "*" ||
+        button === "/")
+      {
+        this.clearResult()
+      }
+      else {
         this.setState({
           result: '' + button
         })
@@ -37,14 +45,18 @@ class App extends React.Component {
     } else if(this.state.result === 'ERROR'){
       if (button === 'AC'){
         this.clearResult()
-      }
-      else if(button ==='negative'){
+      } else if(button ==='negative'){
         this.setState({
           positive: false,
           result: '-'
         })
-      }
-      else {
+      } else if( button === "+" ||
+        button === "-" || 
+        button === "*" ||
+        button === "/")
+      {
+        this.clearResult()
+      } else {
         this.setState({
           positive: true,
           result: button + ''
@@ -70,7 +82,7 @@ class App extends React.Component {
     }
   }
 
-
+  //helper functions
   equalButtonPressed(){
     try {
       if(this.state.result === 0){
