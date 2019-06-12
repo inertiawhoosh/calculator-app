@@ -14,7 +14,7 @@ class App extends React.Component {
   onClick = button => {
     if(button == "AC"){
       this.clearResult()
-    } if(button == "="){
+    }else if(button == "="){
       this.equalButtonPressed()
     }else {
       this.setState({
