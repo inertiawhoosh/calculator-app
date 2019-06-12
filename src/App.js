@@ -16,7 +16,9 @@ class App extends React.Component {
   //keeps result to a specific length
   //doesn't allow users to click more than one operator in a row
   //clears screen after an operator
-  //testing
+  //make the % key work
+  //if a number is negative when pressing the "+/-" turn it positive
+  //always make +/- go to front of number
 
   onClick = button => {
     if (this.state.result === "ERROR") {
@@ -25,6 +27,10 @@ class App extends React.Component {
       })
     }else if(button === "AC"){
       this.clearResult()
+    }else if(this.state.result.length > 5){
+      this.setState({
+        result: 'MAX'
+      })
     }else if(button === "="){
       this.equalButtonPressed()
     }else {
