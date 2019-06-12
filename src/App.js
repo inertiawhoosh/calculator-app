@@ -14,18 +14,23 @@ class App extends React.Component {
   }
 
   //updates to make
-  //keeps result to a specific length
   //doesn't allow users to click more than one operator in a row
   //clears screen after an operator
   //make the % key work
-  //if a number is negative when pressing the "+/-" turn it positive
-  //always make +/- go to front of number
 
   onClick = button => {
     if (this.state.result === "ERROR") {
-      this.setState({
-       result: button
-      })
+      if (button === "negative"){
+        this.setState({
+          positive: false,
+          result: '-'
+        })
+      } else {
+        this.setState({
+          positive: true,
+          result: button
+        })
+      }
     }else if(button === "AC"){
       this.clearResult()
     }else if(this.state.result.length > 6){
@@ -36,7 +41,7 @@ class App extends React.Component {
       this.plusMinusPressed()
     }else if(button === "="){
       this.equalButtonPressed()
-    }else {
+    } else {
       this.setState({
         result: this.state.result + button
       })
@@ -45,9 +50,15 @@ class App extends React.Component {
 
   equalButtonPressed(){
     try {
-      this.setState({
-        result: (eval(this.state.result))
-      })
+      if(this.state.result === ""){
+        this.setState({
+          result: ""
+        })
+      } else {
+        this.setState({
+          result: eval(this.state.result) + ""
+        })
+      }    
     } catch {
       this.setState({
         result: 'ERROR'
