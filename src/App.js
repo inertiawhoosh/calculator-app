@@ -11,11 +11,16 @@ class App extends React.Component {
     }
   }
 
+  onClick = button => {
+    this.setState({
+      result: this.state.result + button
+    })
+
+  }
   //need functions for: 
   //equalButtonPressed
   //toClearResult
-
-  clearResult = () => {
+  clearResult() {
     this.setState({
       result: ""
     })

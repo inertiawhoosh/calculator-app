@@ -3,9 +3,10 @@ import React from 'react'
 class Result extends React.Component {
 	
 	render() {
+		let {result} = this.props;
 		return (
 		    <div className="result">
-		    0
+		    	{result}
 		    </div>
 		)
 	}
