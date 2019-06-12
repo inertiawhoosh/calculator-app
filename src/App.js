@@ -16,12 +16,11 @@ class App extends React.Component {
   //updates to make
   //doesn't allow users to click more than one operator in a row
   //clears screen after an operator
-  //make the % key work
   //clear state if I press a number after =
 
   onClick = button => {
-    if (this.state.result === "ERROR") {
-      if (button === "negative"){
+    if (this.state.result === 'ERROR') {
+      if (button === 'negative'){
         this.setState({
           positive: false,
           result: '-'
@@ -32,28 +31,28 @@ class App extends React.Component {
           result: button
         })
       }
-    }else if(this.state.result == 0){
-      if(button === "AC"){
+    }else if(this.state.result === 0){
+      if(button === 'AC'){
          this.clearResult()
-      } else if(button === "="){
+      } else if(button === '='){
         this.equalButtonPressed()
+      } else if(button==='negative'){
+        this.plusMinusPressed()
       }else {
         this.setState({
           result: '' + button
         })
       }
     } 
-      else if(button === "AC"){
+      else if(button === 'AC'){
       this.clearResult()
     }else if(this.state.result.length > 6){
-      this.setState({
-        result: 'ERROR'
-      })
-    }else if(button ==="negative"){
+      this.catchError()
+    }else if(button ==='negative'){
       this.plusMinusPressed()
-    }else if(button === "="){
+    }else if(button === '='){
       this.equalButtonPressed()
-    } else if(button === "%"){
+    } else if(button === '%'){
       this.pressPercentButton()
     } else {
       this.setState({
@@ -70,13 +69,11 @@ class App extends React.Component {
         })
       } else {
         this.setState({
-          result: eval(this.state.result) + ""
+          result: eval(this.state.result) + ''
         })
       }    
     } catch {
-      this.setState({
-        result: 'ERROR'
-      })
+      this.catchError()
     }
   }
 
@@ -84,7 +81,7 @@ class App extends React.Component {
     if(this.state.positive === true) {
       this.setState({
         positive: false,
-        result: "-" + this.state.result,
+        result: '-' + this.state.result,
       })
     }else{
       try {
@@ -93,16 +90,14 @@ class App extends React.Component {
           result: this.state.result.substr(1)
         })
       } catch {
-        this.setState({
-          result: 'ERROR'
-        })
+        this.catchError()
       }  
     }
   }
 
   pressPercentButton(){
     this.setState({
-      result: eval(this.state.result / 100) + ""
+        result: eval(this.state.result / 100) + ''
       })
   }
 
@@ -113,6 +108,12 @@ class App extends React.Component {
       result: 0
     })
   }
+
+   catchError() {
+     this.setState({
+          result: 'ERROR'
+      })
+   }
 
   render(){
     return (
