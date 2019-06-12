@@ -9,7 +9,7 @@ class App extends React.Component {
 
     this.state = {
       positive: true,
-      result: ""
+      result: 0
     }
   }
 
@@ -17,6 +17,8 @@ class App extends React.Component {
   //doesn't allow users to click more than one operator in a row
   //clears screen after an operator
   //make the % key work
+  //clear state if I press a number after =
+
 
   onClick = button => {
     if (this.state.result === "ERROR") {
@@ -31,7 +33,12 @@ class App extends React.Component {
           result: button
         })
       }
-    }else if(button === "AC"){
+    }else if(this.state.result == 0){
+      this.setState({
+        result: '' + button
+      })
+    } 
+      else if(button === "AC"){
       this.clearResult()
     }else if(this.state.result.length > 6){
       this.setState({
@@ -89,7 +96,7 @@ class App extends React.Component {
   clearResult() {
     this.setState({
       positive: true,
-      result: ""
+      result: 0
     })
   }
 
