@@ -52,6 +52,7 @@ class App extends React.Component {
         break;
 
       case 'negative':
+      //FIX MEEEEEE
         this.plusMinusPressed()
         break;
 
@@ -140,18 +141,11 @@ class App extends React.Component {
 
   //helper functions
   equalButtonPressed(){
-    try {
-      if(this.state.result === 0){
-        this.setState({
-          result: 0
-        })
-      } else {
-        let test = this.button
-        this.setState({
-          result: (eval(this.state.operator + this.state.result)) + '',
-          operator: ''
-        })
-      }    
+    try{
+      this.setState({
+        result: (eval(this.state.operator + this.state.result)) + '',
+        operator: ''
+      })   
     } catch {
       this.catchError()
     }
@@ -176,13 +170,9 @@ class App extends React.Component {
   }
 
   pressPercentButton(){
-    if(this.state.result === 0){
-      this.clearResult()
-    } else {
       this.setState({
         result: eval(this.state.result / 100) + ''
       })
-    }
   }
 
 
