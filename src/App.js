@@ -1,6 +1,7 @@
 import React from 'react';
 import Keypad from './Components/Keypad'
 import Result from './Components/Result'
+import './Components/components.css'
 
 class App extends React.Component {
   constructor() {
@@ -12,9 +13,9 @@ class App extends React.Component {
   }
 
   onClick = button => {
-    if(button == "AC"){
+    if(button === "AC"){
       this.clearResult()
-    }else if(button == "="){
+    }else if(button === "="){
       this.equalButtonPressed()
     }else {
       this.setState({
@@ -39,8 +40,10 @@ class App extends React.Component {
   render(){
     return (
       <div className='calculator-wrapper'>
-        <Result result={this.state.result} />
-        <Keypad onClick={this.onClick} />
+        <div className='calculator'>
+          <Result result={this.state.result} />
+          <Keypad onClick={this.onClick} />
+        </div>
       </div>
     );
   }

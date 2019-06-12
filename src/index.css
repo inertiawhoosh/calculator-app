@@ -11,3 +11,50 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/*App styling*/
+
+.calculator-wrapper{
+  width: 200px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.calculator {
+  display: flex;
+  border: 1px solid black;
+  flex-direction: column;
+}
+
+/* Component Styling */
+
+
+.result {
+  height: 100px;
+  background-color: black;
+  color: white;
+}
+
+.top-and-number-keys {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.keypad {
+  display: flex;
+  justify-content: center;
+}
+
+.operation-keys{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.number-keys {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+}

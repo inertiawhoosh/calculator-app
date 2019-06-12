@@ -6,7 +6,9 @@ class Result extends React.Component {
 		let {result} = this.props;
 		return (
 		    <div className="result">
-		    	{result}
+		    	<p className="result-text">
+		    		{result}
+		    	</p>
 		    </div>
 		)
 	}
