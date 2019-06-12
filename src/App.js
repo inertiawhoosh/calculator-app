@@ -70,12 +70,12 @@ class App extends React.Component {
       }else if( button === "+"){
         if (this.state.operator) {
           this.setState({
-            operator: this.state.operator + "+" + this.state.result,
+            operator: this.state.operator + button + this.state.result,
             result: ''
           })
         } else {
           this.setState({
-            operator: this.state.result,
+            operator: this.state.result + button,
             result: ''
           })
         }
@@ -103,8 +103,9 @@ class App extends React.Component {
           result: 0
         })
       } else {
+        let test = this.button
         this.setState({
-          result: (eval(this.state.result + "+" + this.state.operator)) + '',
+          result: (eval(this.state.operator + this.state.result)) + '',
           operator: ''
         })
       }    
