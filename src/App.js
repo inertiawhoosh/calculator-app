@@ -68,12 +68,18 @@ class App extends React.Component {
       if(button === 'AC'){
         this.clearResult()
       }else if( button === "+"){
-        this.setState({
-          operator: this.state.result,
-          result: ''
-        })
-      }
-        else if(this.state.result.length > 6){
+        if (this.state.operator) {
+          this.setState({
+            operator: this.state.operator + "+" + this.state.result,
+            result: ''
+          })
+        } else {
+          this.setState({
+            operator: this.state.result,
+            result: ''
+          })
+        }
+      }else if(this.state.result.length > 6){
         this.catchError()
       }else if(button ==='negative'){
         this.plusMinusPressed()
