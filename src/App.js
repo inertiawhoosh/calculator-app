@@ -99,7 +99,8 @@ class App extends React.Component {
         case "*":
         case "/":
           if (this.state.operator) {
-            if(this.state.operator[this.state.operator.length-1] === "+" || "-" || "*" || "/"){
+            if(this.state.operator[this.state.operator.length-1] === "+" || "-" || "*" || "/" 
+            && this.state.operator[this.state.operator.length-2] === "+" || "-" || "*" || "/"  ){
               this.setState({
                 operator: this.state.operator.slice(0,-1) + button
               })
