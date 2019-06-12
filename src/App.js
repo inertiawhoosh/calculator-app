@@ -17,11 +17,7 @@ class App extends React.Component {
 
   onClick = button => {
     if(this.state.equalPressed === true){
-      this.setState({
-        result: button,
-        equalPressed: false
-      })
-
+        this.clearResult(button)
     } else {
       switch(this.state.result){
         case 0:
@@ -49,7 +45,7 @@ class App extends React.Component {
       case "*":
       case "/":
       case "%":
-        this.clearResult()
+        this.clearResult(button)
         break;
 
       case 'negative':
@@ -70,7 +66,7 @@ class App extends React.Component {
         case "-":
         case "*":
         case "/":
-          this.clearResult()
+          this.clearResult(button)
           break;
 
         default:
@@ -94,7 +90,7 @@ class App extends React.Component {
     caseDefault(button){
       switch(button){
         case "AC":
-          this.clearResult();
+          this.clearResult(button);
           break;
 
         case "+":
@@ -180,11 +176,22 @@ class App extends React.Component {
   }
 
 
-  clearResult() {
-    this.setState({
-      positive: true,
-      result: 0
-    })
+  clearResult(button) {
+    if(this.state.equalPressed === false){
+      this.setState({
+        positive: true,
+        result: 0,
+        operator: false,
+        equalPressed: false
+      })
+    } else {
+       this.setState({
+          positive: true,
+          result: button + '',
+          operator: false,
+          equalPressed: false
+        })
+    }
   }
 
    catchError() {
