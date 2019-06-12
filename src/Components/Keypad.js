@@ -25,7 +25,7 @@ class Keypad extends React.Component {
 		        </div>
 		        <div className="operation-keys">
 		            <button className="calc-key divide" onClick={e => this.props.onClick('/')}>/</button>
-		            <button className="calc-key multiply" onClick={e => this.props.onClick('x')}>x</button>
+		            <button className="calc-key multiply" onClick={e => this.props.onClick('*')}>x</button>
 		            <button className="calc-key subtract" onClick={e => this.props.onClick('-')}>-</button>
 		            <button className="calc-key add" onClick={e => this.props.onClick('+')}>+</button>
 		            <button className="calc-key equal" onClick={e => this.props.onClick("=")}>=</button>
