@@ -10,6 +10,16 @@ class App extends React.Component {
       result: ""
     }
   }
+
+  //need functions for: 
+  //equalButtonPressed
+  //toClearResult
+
+  clearResult = () => {
+    this.setState({
+      result: ""
+    })
+  }
   render(){
     return (
       <div className='calculator-wrapper'>
