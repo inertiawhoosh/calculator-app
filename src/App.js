@@ -13,7 +13,11 @@ class App extends React.Component {
   }
 
   onClick = button => {
-    if(button === "AC"){
+    if (this.state.result === "ERROR") {
+      this.setState({
+       result: button
+      })
+    }else if(button === "AC"){
       this.clearResult()
     }else if(button === "="){
       this.equalButtonPressed()
@@ -27,9 +31,15 @@ class App extends React.Component {
   //need functions for: 
   //equalButtonPressed
   equalButtonPressed(){
-    this.setState({
-      result: (eval(this.state.result))
-    })
+    try {
+      this.setState({
+        result: (eval(this.state.result))
+      })
+    } catch {
+      this.setState({
+        result: 'ERROR'
+      })
+    }
   }
   //toClearResult
   clearResult() {
