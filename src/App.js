@@ -10,7 +10,8 @@ class App extends React.Component {
     this.state = {
       positive: true,
       result: 0,
-      operator: false
+      operator: false,
+      sign: false
     }
   }
 
@@ -70,16 +71,24 @@ class App extends React.Component {
         button === "-" || 
         button === "*" ||
         button === "/"){
-        if (this.state.operator) {
+        if(this.state.operator[this.state.operator.length -1] === "+"){
           this.setState({
-            operator: this.state.operator + this.state.result + button,
-            result: ''
+            result: 'test'
           })
-        } else {
-          this.setState({
-            operator: this.state.result + button,
-            result: ''
-          })
+
+        } 
+        else {
+            if (this.state.operator) {
+            this.setState({
+              operator: this.state.operator + this.state.result + button,
+              result: ''
+            })
+          } else {
+            this.setState({
+              operator: this.state.result + button,
+              result: ''
+            })
+          }
         }
       }else if(this.state.result.length > 6){
         this.catchError()
