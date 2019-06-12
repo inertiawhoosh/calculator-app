@@ -11,30 +11,31 @@ class App extends React.Component {
       positive: true,
       result: 0,
       operator: false,
+      equalPressed: false
     }
   }
 
-  //updates to make
-  //clear state if I press a number after doing an equation
-  //going from NUM - to x gives me an error ()
-
   onClick = button => {
-    switch(this.state.result){
-      case (this.state.result.length > 6):
-        this.catchError()
-        break;
+    if(this.state.equalPressed === true){
+      this.setState({
+        result: button,
+        equalPressed: false
+      })
 
-      case 0:
-        this.caseZero(button)
-        break;
+    } else {
+      switch(this.state.result){
+        case 0:
+          this.caseZero(button)
+          break;
 
-      case 'ERROR':
-        this.caseError(button)
-        break;
+        case 'ERROR':
+          this.caseError(button)
+          break;
 
-      default:
-        this.caseDefault(button)
-        break;
+        default:
+          this.caseDefault(button)
+          break;
+       }
     }
   }
 
@@ -88,6 +89,8 @@ class App extends React.Component {
       }
     }
 
+    //7 x 7 - 4
+
     caseDefault(button){
       switch(button){
         case "AC":
@@ -99,17 +102,10 @@ class App extends React.Component {
         case "*":
         case "/":
           if (this.state.operator) {
-            if(this.state.operator[this.state.operator.length-1] === "+" || "-" || "*" || "/" 
-            && this.state.operator[this.state.operator.length-2] === "+" || "-" || "*" || "/"  ){
-              this.setState({
-                operator: this.state.operator.slice(0,-1) + button
-              })
-            } else {
               this.setState({
                 operator: this.state.operator + this.state.result + button,
                 result: ''
               })
-            }
           } else {
             this.setState({
               operator: this.state.result + button,
@@ -143,7 +139,8 @@ class App extends React.Component {
     try{
       this.setState({
         result: (eval(this.state.operator + this.state.result)) + '',
-        operator: ''
+        operator: '',
+        equalPressed: true
       })   
     } catch {
       this.catchError()
