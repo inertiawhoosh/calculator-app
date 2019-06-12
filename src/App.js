@@ -4,10 +4,10 @@ import Result from './Components/Result'
 
 function App() {
   return (
-    <main className='App'>
+    <div className='calculator-wrapper'>
       <Result />
       <Keypad />
-    </main>
+    </div>
   );
 }
 
