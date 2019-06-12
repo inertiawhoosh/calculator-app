@@ -18,7 +18,8 @@ class App extends React.Component {
   //clears screen after an operator
   //make the % key work
   //clear state if I press a number after =
-
+  //if I press AC when it's at 0 I get the words AC
+  
 
   onClick = button => {
     if (this.state.result === "ERROR") {
@@ -34,9 +35,13 @@ class App extends React.Component {
         })
       }
     }else if(this.state.result == 0){
-      this.setState({
-        result: '' + button
-      })
+      if(button === "="){
+        this.equalButtonPressed()
+      }else {
+        this.setState({
+          result: '' + button
+        })
+      }
     } 
       else if(button === "AC"){
       this.clearResult()
@@ -57,9 +62,9 @@ class App extends React.Component {
 
   equalButtonPressed(){
     try {
-      if(this.state.result === ""){
+      if(this.state.result === 0){
         this.setState({
-          result: ""
+          result: 0
         })
       } else {
         this.setState({
@@ -92,6 +97,7 @@ class App extends React.Component {
       }  
     }
   }
+
 
   clearResult() {
     this.setState({
