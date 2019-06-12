@@ -26,25 +26,33 @@ class App extends React.Component {
         this.equalButtonPressed()
       } else if(button==='negative'){
         this.plusMinusPressed()
-      }else {
+      } else if(button ==="%"){
+        this.pressPercentButton()
+      } else {
         this.setState({
           result: '' + button
         })
       }
+    //if state is at ERROR
+    } else if(this.state.result === 'ERROR'){
+      if (button === 'AC'){
+        this.clearResult()
+      }
+      else if(button ==='negative'){
+        this.setState({
+          positive: false,
+          result: '-'
+        })
+      }
+      else {
+        this.setState({
+          positive: true,
+          result: button + ''
+        })
+      }
+    //standard state
     } else {
-      if (this.state.result === 'ERROR') {
-        if (button === 'negative'){
-          this.setState({
-            positive: false,
-            result: '-'
-          })
-        } else {
-          this.setState({
-            positive: true,
-            result: button
-          })
-        }
-      }else if(button === 'AC'){
+      if(button === 'AC'){
         this.clearResult()
       }else if(this.state.result.length > 6){
         this.catchError()
@@ -61,6 +69,7 @@ class App extends React.Component {
       }
     }
   }
+
 
   equalButtonPressed(){
     try {
@@ -97,9 +106,13 @@ class App extends React.Component {
   }
 
   pressPercentButton(){
-    this.setState({
+    if(this.state.result === 0){
+      this.clearResult()
+    } else {
+      this.setState({
         result: eval(this.state.result / 100) + ''
       })
+    }
   }
 
 
@@ -115,6 +128,7 @@ class App extends React.Component {
           result: 'ERROR'
       })
    }
+
 
   render(){
     return (
