@@ -11,12 +11,10 @@ class App extends React.Component {
       positive: true,
       result: 0,
       operator: false,
-      sign: false
     }
   }
 
   //updates to make
-  //doesn't allow users to click more than one operator in a row
   //clear state if I press a number after doing an equation
 
   onClick = button => {
@@ -73,9 +71,8 @@ class App extends React.Component {
         button === "/"){
         if(this.state.operator[this.state.operator.length -1] === "+"){
           this.setState({
-            result: 'test'
+            operator: this.state.operator.replace(/.$/,button)
           })
-
         } 
         else {
             if (this.state.operator) {
