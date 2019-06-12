@@ -67,7 +67,10 @@ class App extends React.Component {
     } else {
       if(button === 'AC'){
         this.clearResult()
-      }else if( button === "+"){
+      }else if( button === "+" ||
+        button === "-" || 
+        button === "*" ||
+        button === "/"){
         if (this.state.operator) {
           this.setState({
             operator: this.state.operator + button + this.state.result,
