@@ -99,10 +99,9 @@ class App extends React.Component {
         case "*":
         case "/":
           if (this.state.operator) {
-            if(this.state.operator[this.state.operator.length-1] === "+"){
+            if(this.state.operator[this.state.operator.length-1] === "+" || "-" || "*" || "/"){
               this.setState({
-                //edit me!!!!!
-                result: 'test'
+                operator: this.state.operator.slice(0,-1) + button
               })
             } else {
               this.setState({
@@ -175,8 +174,6 @@ class App extends React.Component {
         }
     }      
   }
-  
-
 
   pressPercentButton(){
       this.setState({
