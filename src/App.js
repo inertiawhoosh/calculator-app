@@ -22,76 +22,86 @@ class App extends React.Component {
     switch(this.state.result){
       case (this.state.result.length > 6):
         this.catchError()
-      break;
+        break;
 
       case 0:
         this.caseZero(button)
-      break;
+        break;
 
       case 'ERROR':
         this.caseError(button)
-      break;
+        break;
 
       default:
         this.caseDefault(button)
-      break;
+        break;
     }
   }
 
   //switch functions
   caseZero(button){
-    if(button === 'AC'){
-           this.clearResult()
-    } else if(button === '='){
-          this.equalButtonPressed()
-    } else if(button==='negative'){
-          this.plusMinusPressed()
-    } else if(button ==="%"){
-          this.pressPercentButton()
-    } else if( button === "+" ||
-          button === "-" || 
-          button === "*" ||
-          button === "/")
-        {
-          this.clearResult()
-    } else {
-          this.setState({
-            result: '' + button
-          })
-        }
+    switch(button){
+      case "AC":
+      case "=":
+      case "+":
+      case "-":
+      case "*":
+      case "/":
+      case "%":
+        this.clearResult()
+        break;
+
+      case 'negative':
+        this.plusMinusPressed()
+        break;
+
+      default:
+        this.setState({
+          result: '' + button
+        })
+      }
     }
 
     caseError(button){
-      if (button === 'AC'){
-        this.clearResult()
-      } else if(button ==='negative'){
-        this.setState({
-          positive: false,
-          result: '-'
-        })
-      } else if( button === "+" || button === "-" || button === "*" || button === "/"){ 
-        this.clearResult()
-      } else {
-        this.setState({
-          positive: true,
-          result: button + ''
+      switch(button){
+        case "AC":
+        case "+":
+        case "-":
+        case "*":
+        case "/":
+          this.clearResult()
+          break;
+
+        default:
+          this.setState({
+            positive: true,
+            result: button + ''
           })
-        }
-      } 
+          break;
+
+        case 'negative':
+          this.setState({
+            positive: false,
+            result: '-'
+          })
+          break;
+      }
+    }
 
     caseDefault(button){
       switch(button){
         case "AC":
           this.clearResult();
-        break;
+          break;
 
         case "+":
         case "-":
         case "*":
         case "/":
           if (this.state.operator) {
-            if(this.state.operator[this.state.operate.length-1] === "+"){
+            if(this.state.operator[this.state.operator.length-1] === "+"){
               this.setState({
+                //edit me!!!!!
                 result: 'test'
               })
             } else {
@@ -106,24 +116,25 @@ class App extends React.Component {
               result: ''
             })
           }
-        break;
+          break;
 
         case 'negative':
           this.plusMinusPressed()
-        break;
+          break;
 
         case '=':
           this.equalButtonPressed()
-        break;
+          break;
 
         case '%':
           this.pressPercentButton()
-        break;
+          break;
 
         default:
           this.setState({
             result: this.state.result + button
           })
+        break;
       }
   }
 
