@@ -12,6 +12,12 @@ class App extends React.Component {
     }
   }
 
+  //updates to make
+  //keeps result to a specific length
+  //doesn't allow users to click more than one operator in a row
+  //clears screen after an operator
+  //testing
+
   onClick = button => {
     if (this.state.result === "ERROR") {
       this.setState({
@@ -28,8 +34,6 @@ class App extends React.Component {
     }
   }
 
-  //need functions for: 
-  //equalButtonPressed
   equalButtonPressed(){
     try {
       this.setState({
@@ -41,12 +45,13 @@ class App extends React.Component {
       })
     }
   }
-  //toClearResult
+
   clearResult() {
     this.setState({
       result: ""
     })
   }
+
   render(){
     return (
       <div className='calculator-wrapper'>
