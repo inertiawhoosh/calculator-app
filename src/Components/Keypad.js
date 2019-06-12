@@ -8,7 +8,7 @@ class Keypad extends React.Component {
 		    	<div className="top-and-number-keys">
 			        <div className="top-keys">
 			            <button className="calc-key top-key clear" onClick={e => this.props.onClick('AC')}>AC</button>
-			            <button className="calc-key top-key plus-minus" onClick={e => this.props.onClick('-')}>+/-</button>
+			            <button className="calc-key top-key plus-minus" onClick={e => this.props.onClick('negative')}>+/-</button>
 			            <button className="calc-key top-key percent" onClick={e => this.props.onClick('%')}>%</button>
 			        </div>
 			        <div className="number-keys">
