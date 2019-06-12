@@ -102,7 +102,7 @@ class App extends React.Component {
             if(this.state.operator[this.state.operator.length-1] === "+" || "-" || "*" || "/" 
             && this.state.operator[this.state.operator.length-2] === "+" || "-" || "*" || "/"  ){
               this.setState({
-                operator: this.state.operator.slice(0,-1) + button
+                operator: this.state.operator.slice(0,-2) + button
               })
             } else {
               this.setState({
