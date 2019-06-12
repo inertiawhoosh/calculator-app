@@ -1,16 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
 
 /*App styling*/
 
@@ -60,8 +56,10 @@ code {
 
 .result {
   height: 100px;
-  background-color: black;
+  background-color: #1c1c1c;
   color: white;
+  text-align: right;
+  font-size: 50px;
 }
 
 .calc-key {
@@ -81,13 +79,23 @@ code {
 }
 
 .operation-key{
-  background-color: orange;
+  background-color: #ff9500;
+  color: white;
 }
 
 .top-key {
-  background-color: #D3D3D3;
+  background-color: #C0C0C0;
 }
 
 .number-key{
- background-color: #DCDCDC;
+ background-color: #D4d4d2;
+}
+
+.top-key:active, .number-key:active {
+  background-color: #A9A9A9;
+}
+
+.operation-key:active{
+  color: #ff9500;
+  background-color: white;
 }
