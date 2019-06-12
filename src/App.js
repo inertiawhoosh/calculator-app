@@ -35,7 +35,9 @@ class App extends React.Component {
         })
       }
     }else if(this.state.result == 0){
-      if(button === "="){
+      if(button === "AC"){
+         this.clearResult()
+      } else if(button === "="){
         this.equalButtonPressed()
       }else {
         this.setState({
