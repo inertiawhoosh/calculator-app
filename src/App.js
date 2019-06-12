@@ -16,9 +16,14 @@ class App extends React.Component {
 
   //updates to make
   //clear state if I press a number after doing an equation
+  //going from NUM - to x gives me an error ()
 
   onClick = button => {
     switch(this.state.result){
+      case (this.state.result.length > 6):
+        this.catchError()
+      break;
+
       case 0:
         this.caseZero(button)
       break;
@@ -75,41 +80,52 @@ class App extends React.Component {
       } 
 
     caseDefault(button){
-      if(button === 'AC'){
-          this.clearResult()
-      } else if( button === "+" || button === "-" || button === "*" || button === "/"){
-          if(this.state.operator[this.state.operator.length -1] === "+"){
-            this.setState({
-              operator: this.state.operator.replace(/.$/,button)
-            })
-          } 
-          else {
-              if (this.state.operator) {
+      switch(button){
+        case "AC":
+          this.clearResult();
+        break;
+
+        case "+":
+        case "-":
+        case "*":
+        case "/":
+          if (this.state.operator) {
+            if(this.state.operator[this.state.operate.length-1] === "+"){
+              this.setState({
+                result: 'test'
+              })
+            } else {
               this.setState({
                 operator: this.state.operator + this.state.result + button,
                 result: ''
               })
-            } else {
-              this.setState({
-                operator: this.state.result + button,
-                result: ''
-              })
             }
+          } else {
+            this.setState({
+              operator: this.state.result + button,
+              result: ''
+            })
           }
-      } else if(this.state.result.length > 6){
-        this.catchError()
-      } else if(button ==='negative'){
-        this.plusMinusPressed()
-      } else if(button === '='){
+        break;
+
+        case 'negative':
+          this.plusMinusPressed()
+        break;
+
+        case '=':
           this.equalButtonPressed()
-      } else if(button === '%'){
+        break;
+
+        case '%':
           this.pressPercentButton()
-      } else {
-        this.setState({
-          result: this.state.result + button
-        })
+        break;
+
+        default:
+          this.setState({
+            result: this.state.result + button
+          })
       }
-    }
+  }
 
   //helper functions
   equalButtonPressed(){
