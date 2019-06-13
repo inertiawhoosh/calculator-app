@@ -91,8 +91,6 @@ class App extends React.Component {
       }
     }
 
-    //7 x 7 - 4
-
     caseDefault(button){
       switch(button){
         case "AC":
@@ -152,7 +150,6 @@ class App extends React.Component {
   }
 
   plusMinusPressed(){
-    //should remove zero
     if(this.state.positive === true) {
       if(this.state.result === 0){
         this.setState({
@@ -189,7 +186,7 @@ class App extends React.Component {
       case "negative":
         this.setState({
           positive: true,
-          result: '-' + '',
+          result: '-',
           operator: false,
           equalPressed: false
         })
