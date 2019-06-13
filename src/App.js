@@ -16,14 +16,12 @@ class App extends React.Component {
   }
 
   onClick = button => {
-    if(this.state.equalPressed && button !== '%'){
-      if (button === "+" || "-" || "/" || "*"){
-        this.caseDefault(button)
-        
-      } else {
-        this.clearResult(button)
-      }
-
+    if(this.state.equalPressed === true && button !== '%'){
+        if (button === "+" || button === "-" || button === "/" || button === "*"){
+          this.caseDefault(button)
+        } else {
+          this.clearResult(button)
+        }
     } else {
       switch(this.state.result){
         case 0:
@@ -104,14 +102,16 @@ class App extends React.Component {
         case "*":
         case "/":
           if (this.state.operator) {
-              this.setState({
-                operator: this.state.operator + this.state.result + button,
-                result: ''
-              })
+            this.setState({
+              operator: this.state.operator + this.state.result + button,
+              result: '',
+              equalPressed: false
+            })
           } else {
             this.setState({
               operator: this.state.result + button,
-              result: ''
+              result: '',
+              equalPressed: false
             })
           }
           break;
