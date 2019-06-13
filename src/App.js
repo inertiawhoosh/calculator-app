@@ -17,25 +17,31 @@ class App extends React.Component {
 
   onClick = button => {
     if(this.state.result.length > 6){
-      this.catchError()
+      this.catchError();
     } else if(this.state.equalPressed === true && button !== '%'){
-      this.equalPressedTrue(button)
+      this.equalPressedTrue(button);
+    } else if (this.state.result === '-'){
+      this.handleNegativeOnEmpty(button);
     } else {
       switch(this.state.result){
         case 0:
-          this.caseZero(button)
+          this.caseZero(button);
           break;
 
         case 'ERROR':
-          this.caseError(button)
+          this.caseError(button);
+          break;
+
+        case 'negative':
+          this.handleNegativeOnEmpty(button)
           break;
 
         default:
-          this.caseDefault(button)
+          this.caseDefault(button);
           break;
        }
     }
-  }
+  };
 
   //switch functions
   caseZero(button){
@@ -47,17 +53,18 @@ class App extends React.Component {
       case '*':
       case '/':
       case '%':
-        this.clearResult(button)
+        this.clearResult(button);
         break;
 
       case 'negative':
-        this.plusMinusPressed()
+        this.plusMinusPressed();
         break;
 
       default:
         this.setState({
           result: '' + button
         })
+        break;
       }
     }
 
@@ -68,21 +75,21 @@ class App extends React.Component {
         case '-':
         case '*':
         case '/':
-          this.clearResult(button)
+          this.clearResult(button);
           break;
 
         default:
           this.setState({
             positive: true,
             result: button + ''
-          })
+          });
           break;
 
         case 'negative':
           this.setState({
             positive: false,
             result: '-'
-          })
+          });
           break;
       }
     }
@@ -113,15 +120,15 @@ class App extends React.Component {
           break;
 
         case 'negative':
-          this.plusMinusPressed()
+          this.plusMinusPressed();
           break;
 
         case '=':
-          this.equalButtonPressed()
+          this.equalButtonPressed();
           break;
 
         case '%':
-          this.pressPercentButton()
+          this.pressPercentButton();
           break;
 
         default:
@@ -143,7 +150,7 @@ class App extends React.Component {
     } catch {
       this.catchError()
     }
-  }
+  };
 
   plusMinusPressed(){
     if(this.state.positive === true) {
@@ -168,13 +175,43 @@ class App extends React.Component {
           })
         }
     }      
-  }
+  };
 
   pressPercentButton(){
       this.setState({
         result: eval(this.state.result / 100) + ''
       })
-  }
+  };
+
+  handleNegativeOnEmpty(button) {
+    switch(button){
+      case 'AC':
+        this.clearResult();
+        break;
+
+      case 'negative':
+        this.plusMinusPressed(button);
+        break;
+
+      case '+':
+      case '-':
+      case '*':
+      case '/': 
+      case '=':
+      case '%':
+      case '.':
+        this.setState({
+          result: this.state.result
+        });
+        break;
+
+      default:
+        this.setState({
+          result: this.state.result + button
+        });
+        break;
+    }
+  };
 
   equalPressedTrue(button){
     if (button === '+' || button === '-' || button === '/' || button === '*'){
@@ -186,7 +223,7 @@ class App extends React.Component {
     } else {
       this.clearResult(button)
     }
-  }
+  };
 
 
   clearResult(button) {
@@ -227,26 +264,26 @@ class App extends React.Component {
         }
         break;
     }
-  }
+  };
 
    catchError() {
      this.setState({
           result: 'ERROR'
       })
-   }
+   };
 
 
   render(){
     return (
       <div className='calculator-wrapper'>
-        <div className='calculator'>
+        <div className='calculator'>    
           <Result result={this.state.result} />
           <Keypad onClick={this.onClick} />
         </div>
       </div>
     );
   }
-}
+};
 
 export default App;
 
