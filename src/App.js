@@ -20,8 +20,8 @@ class App extends React.Component {
       this.catchError();
     } else if(this.state.equalPressed === true && button !== '%'){
       this.equalPressedTrue(button);
-    } else if (this.state.result === '-'){
-      this.handleNegativeOnEmpty(button);
+    } else if (this.state.result === '-' || this.state.result === '.'){
+      this.handleDontChange(button);
     } else {
       switch(this.state.result){
         case 0:
@@ -30,10 +30,6 @@ class App extends React.Component {
 
         case 'ERROR':
           this.caseError(button);
-          break;
-
-        case 'negative':
-          this.handleNegativeOnEmpty(button)
           break;
 
         default:
@@ -183,7 +179,7 @@ class App extends React.Component {
       })
   };
 
-  handleNegativeOnEmpty(button) {
+  handleDontChange(button) {
     switch(button){
       case 'AC':
         this.clearResult();
