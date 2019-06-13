@@ -7,5 +7,6 @@ class Doc extends React.Component{
   componentDidMount(){
     document.title = "calculator-app"
   }
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));
