@@ -19,15 +19,7 @@ class App extends React.Component {
     if(this.state.result.length > 6){
       this.catchError()
     } else if(this.state.equalPressed === true && button !== '%'){
-        if (button === '+' || button === '-' || button === '/' || button === '*'){
-          this.caseDefault(button)
-        } else if (button === "="){
-          this.setState({
-            result: this.state.result,
-          })
-        } else {
-          this.clearResult(button)
-        }
+      this.equalPressedTrue(button)
     } else {
       switch(this.state.result){
         case 0:
@@ -182,6 +174,18 @@ class App extends React.Component {
       this.setState({
         result: eval(this.state.result / 100) + ''
       })
+  }
+
+  equalPressedTrue(button){
+    if (button === '+' || button === '-' || button === '/' || button === '*'){
+      this.caseDefault(button)
+    } else if (button === "="){
+      this.setState({
+        result: this.state.result,
+        })
+    } else {
+      this.clearResult(button)
+    }
   }
 
 
