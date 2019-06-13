@@ -2,8 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Live Version
 
-https://calculator-app.victorialgodfrey.now.sh
-note: live version is a bit behind github version at this time. Please download and run locally for best results.
+https://calculator.victorialgodfrey.now.sh/
+
 
 ![](calcpicture.png)
 
