@@ -16,8 +16,15 @@ class App extends React.Component {
   }
 
   onClick = button => {
-    if(this.state.equalPressed === true && button !== "%"){
+    if(this.state.equalPressed){
+      if (button === "+"){
+        this.setState({
+          result: 'test'
+        })
+      } else if (button !== '%'){
         this.clearResult(button)
+      }
+
     } else {
       switch(this.state.result){
         case 0:
@@ -187,7 +194,7 @@ class App extends React.Component {
         })
         break;
 
-      case "AC": 
+      case "AC":
         this.setState({
          positive: true,
           result: 0,
@@ -195,15 +202,6 @@ class App extends React.Component {
           equalPressed: false
         })
       break;
-
-      case "%": 
-        this.setState({
-           positive: true,
-            result: 0,
-            operator: false,
-            equalPressed: false
-          })
-        break;
 
       default:
         if(this.state.equalPressed === false){
