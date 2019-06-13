@@ -16,12 +16,12 @@ class App extends React.Component {
   }
 
   onClick = button => {
-    if(this.state.equalPressed){
+    if(this.state.equalPressed && button !== '%'){
       if (button === "+"){
         this.setState({
           result: 'test'
         })
-      } else if (button !== '%'){
+      } else {
         this.clearResult(button)
       }
 
