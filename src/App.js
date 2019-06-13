@@ -19,8 +19,12 @@ class App extends React.Component {
     if(this.state.result.length > 6){
       this.catchError()
     } else if(this.state.equalPressed === true && button !== '%'){
-        if (button === "+" || button === "-" || button === "/" || button === "*"){
+        if (button === '+' || button === '-' || button === '/' || button === '*'){
           this.caseDefault(button)
+        } else if (button === "="){
+          this.setState({
+            result: this.state.result,
+          })
         } else {
           this.clearResult(button)
         }
@@ -44,13 +48,13 @@ class App extends React.Component {
   //switch functions
   caseZero(button){
     switch(button){
-      case "AC":
-      case "=":
-      case "+":
-      case "-":
-      case "*":
-      case "/":
-      case "%":
+      case 'AC':
+      case '=':
+      case '+':
+      case '-':
+      case '*':
+      case '/':
+      case '%':
         this.clearResult(button)
         break;
 
@@ -67,11 +71,11 @@ class App extends React.Component {
 
     caseError(button){
       switch(button){
-        case "AC":
-        case "+":
-        case "-":
-        case "*":
-        case "/":
+        case 'AC':
+        case '+':
+        case '-':
+        case '*':
+        case '/':
           this.clearResult(button)
           break;
 
@@ -93,14 +97,14 @@ class App extends React.Component {
 
     caseDefault(button){
       switch(button){
-        case "AC":
+        case 'AC':
           this.clearResult(button);
           break;
 
-        case "+":
-        case "-":
-        case "*":
-        case "/":
+        case '+':
+        case '-':
+        case '*':
+        case '/':
           if (this.state.operator) {
             this.setState({
               operator: this.state.operator + this.state.result + button,
@@ -183,7 +187,7 @@ class App extends React.Component {
 
   clearResult(button) {
     switch(button){
-      case "negative":
+      case 'negative':
         this.setState({
           positive: true,
           result: '-',
@@ -192,7 +196,7 @@ class App extends React.Component {
         })
         break;
 
-      case "AC":
+      case 'AC':
         this.setState({
          positive: true,
           result: 0,
