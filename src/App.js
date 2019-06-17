@@ -297,8 +297,15 @@ class App extends React.Component {
       })
    };
 
+   checkLength(){
+      if(this.state.result.length > 6){
+        this.catchError()
+      }
+    }
+
 
   render(){
+    this.checkLength()
     return (
       <div className='calculator-wrapper'>
         <div className='calculator'>    
