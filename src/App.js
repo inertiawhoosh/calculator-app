@@ -297,17 +297,17 @@ class App extends React.Component {
       })
    };
 
-   checkLength(){
+  checkLength(){
     if(this.state.result.length > 7 && this.state.result.includes('.')){
-        this.setState({
-          result: 'test'
-        })
-      } else if(this.state.result.length > 7){
-        this.setState({
-          result: this.state.result.substr(0,7)
-        })
-      }
+      this.setState({
+        result: this.state.result.substr(0,7)
+      })
+    } else if(this.state.result.length > 7){
+      this.setState({
+        result: this.state.result.substr(0,7)
+      })
     }
+  }
 
 
   render(){
