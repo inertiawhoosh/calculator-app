@@ -22,8 +22,6 @@ Run
 1. Eval() is not always the most secure method, however for speed of build in this case I opted to use it
 2. If a number with too many digits is entered users will receive an `ERROR`
 
-## Fixes and Updates
-
 ## In Development
 1. Limiting digits returned. 
 2. Unit testing.
