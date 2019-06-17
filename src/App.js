@@ -11,7 +11,8 @@ class App extends React.Component {
       positive: true,
       result: 0,
       operator: false,
-      equalPressed: false
+      equalPressed: false,
+      periodPressed: false,
     }
   }
 
@@ -98,6 +99,17 @@ class App extends React.Component {
         case 'AC':
           this.clearResult(button);
           break;
+
+        case '.':
+          if(this.state.periodPressed === true){
+            this.handleDontChange(button)
+          } else {
+            this.setState({
+              result: this.state.result + '.',
+              periodPressed: true
+            })
+          }
+        break;
 
         case '+':
         case '-':
