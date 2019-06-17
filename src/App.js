@@ -119,13 +119,15 @@ class App extends React.Component {
             this.setState({
               operator: this.state.operator + this.state.result + button,
               result: '',
-              equalPressed: false
+              equalPressed: false,
+              periodPressed: false
             })
           } else {
             this.setState({
               operator: this.state.result + button,
               result: '',
-              equalPressed: false
+              equalPressed: false,
+              periodPressed: false
             })
           }
           break;
@@ -156,7 +158,8 @@ class App extends React.Component {
       this.setState({
         result: (eval(this.state.operator + this.state.result)) + '',
         operator: '',
-        equalPressed: true
+        equalPressed: true,
+        periodPressed: false,
       })   
     } catch {
       this.catchError()
@@ -244,7 +247,8 @@ class App extends React.Component {
           positive: true,
           result: '-',
           operator: false,
-          equalPressed: false
+          equalPressed: false,
+          periodPressed: false
         })
         break;
 
@@ -253,7 +257,8 @@ class App extends React.Component {
          positive: true,
           result: 0,
           operator: false,
-          equalPressed: false
+          equalPressed: false,
+          periodPressed: false
         })
       break;
 
@@ -263,14 +268,16 @@ class App extends React.Component {
             positive: true,
             result: 0,
             operator: false,
-            equalPressed: false
+            equalPressed: false,
+            periodPressed: false
           })
         } else {
            this.setState({
               positive: true,
               result: button + '',
               operator: false,
-              equalPressed: false
+              equalPressed: false,
+              periodPressed: false
             })
         }
         break;
