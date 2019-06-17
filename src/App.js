@@ -299,7 +299,9 @@ class App extends React.Component {
 
    checkLength(){
       if(this.state.result.length > 6){
-        this.catchError()
+        this.setState({
+          result: this.state.result.substr(0,7)
+        })
       }
     }
 
