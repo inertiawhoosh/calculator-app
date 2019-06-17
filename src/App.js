@@ -192,9 +192,16 @@ class App extends React.Component {
   };
 
   pressPercentButton(){
+    if(this.state.result < 100){
       this.setState({
+        result: eval(this.state.result / 100) + '',
+        periodPressed: true
+      })
+    } else {
+       this.setState({
         result: eval(this.state.result / 100) + ''
       })
+    }
   };
 
   handleDontChange(button) {
