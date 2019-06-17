@@ -17,9 +17,7 @@ class App extends React.Component {
   }
 
   onClick = button => {
-    if(this.state.result.length > 6){
-      this.catchError();
-    } else if(this.state.equalPressed === true && button !== '%'){
+    if(this.state.equalPressed === true && button !== '%'){
       this.equalPressedTrue(button);
     } else {
       switch(this.state.result){
@@ -303,9 +301,7 @@ class App extends React.Component {
         result: this.state.result.substr(0,7)
       })
     } else if(this.state.result.length > 7){
-      this.setState({
-        result: this.state.result.substr(0,7)
-      })
+      this.catchError()
     }
   }
 
