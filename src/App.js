@@ -160,7 +160,7 @@ class App extends React.Component {
         operator: '',
         equalPressed: true,
         periodPressed: false,
-      })   
+      })  
     } catch {
       this.catchError()
     }
@@ -298,7 +298,7 @@ class App extends React.Component {
    };
 
    checkLength(){
-      if(this.state.result.length > 6){
+      if(this.state.result.length > 7){
         this.setState({
           result: this.state.result.substr(0,7)
         })
@@ -307,7 +307,7 @@ class App extends React.Component {
 
 
   render(){
-    this.checkLength()
+    this.checkLength();
     return (
       <div className='calculator-wrapper'>
         <div className='calculator'>    
