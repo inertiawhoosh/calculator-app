@@ -11,6 +11,7 @@ class App extends React.Component {
     equalPressed: false,
     periodPressed: false,
   }
+
   constructor() {
     super();
     this.state = this.defaultState;
@@ -74,21 +75,15 @@ class App extends React.Component {
         case '-':
         case '*':
         case '/':
-          this.clearResult(button);
+          this.setState(this.defaultState)
           break;
 
         default:
-          this.setState({
-            positive: true,
-            result: button + ''
-          });
+          this.clearResultWithUpdates({result: button + ''});
           break;
 
         case 'negative':
-          this.setState({
-            positive: false,
-            result: '-'
-          });
+          this.clearResultWithUpdates({positive: false, result: '-'});
           break;
       }
     }
@@ -237,9 +232,7 @@ class App extends React.Component {
     if (button === '+' || button === '-' || button === '/' || button === '*'){
       this.caseDefault(button)
     } else if (button === "="){
-      this.setState({
-        result: this.state.result,
-        })
+      this.setState({ result: this.state.result })
     } else {
       this.clearResult(button)
     }
@@ -267,9 +260,7 @@ class App extends React.Component {
   };
 
    catchError() {
-     this.setState({
-          result: 'ERROR'
-      })
+     this.setState({result: 'ERROR'})
    };
 
    clearResultWithUpdates(stateUpdates = {}) {
