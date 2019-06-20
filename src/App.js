@@ -253,32 +253,14 @@ class App extends React.Component {
         break;
 
       case 'AC':
-        this.setState({
-         positive: true,
-          result: 0,
-          operator: false,
-          equalPressed: false,
-          periodPressed: false
-        })
-      break;
+        this.setState(this.defaultState);
+        break;
 
       default:
         if(this.state.equalPressed === false){
-          this.setState({
-            positive: true,
-            result: 0,
-            operator: false,
-            equalPressed: false,
-            periodPressed: false
-          })
+          this.setState(this.defaultState);
         } else {
-           this.setState({
-              positive: true,
-              result: button + '',
-              operator: false,
-              equalPressed: false,
-              periodPressed: false
-            })
+          this.clearResultWithUpdates({result: button + ''});
         }
         break;
     }
