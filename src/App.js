@@ -4,17 +4,18 @@ import Result from './Components/Result'
 import './Components/components.css'
 
 class App extends React.Component {
+  defaultState = {
+    positive: true,
+    result: 0,
+    operator: false,
+    equalPressed: false,
+    periodPressed: false,
+  }
   constructor() {
     super();
-
-    this.state = {
-      positive: true,
-      result: 0,
-      operator: false,
-      equalPressed: false,
-      periodPressed: false,
-    }
+    this.state = this.defaultState;
   }
+
 
   onClick = button => {
     if(this.state.equalPressed === true && button !== '%'){
@@ -248,13 +249,7 @@ class App extends React.Component {
   clearResult(button) {
     switch(button){
       case 'negative':
-        this.setState({
-          positive: true,
-          result: '-',
-          operator: false,
-          equalPressed: false,
-          periodPressed: false
-        })
+        this.clearResultWithUpdates({positive: false, result: '-'});
         break;
 
       case 'AC':
@@ -294,6 +289,10 @@ class App extends React.Component {
           result: 'ERROR'
       })
    };
+
+   clearResultWithUpdates(stateUpdates = {}) {
+    this.setState({ ...this.defaultState, ...stateUpdates });
+  }
 
   checkLength(){
     if(this.state.result.length > 7 && this.state.result.includes('.')){
