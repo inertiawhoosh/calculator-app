@@ -53,7 +53,7 @@ class App extends React.Component {
       case '*':
       case '/':
       case '%':
-        this.clearResult(button);
+        this.setState(this.defaultState);
         break;
 
       case 'negative':
@@ -61,9 +61,7 @@ class App extends React.Component {
         break;
 
       default:
-        this.setState({
-          result: '' + button
-        })
+        this.setState({ result: '' + button })
         break;
       }
     }
@@ -91,17 +89,14 @@ class App extends React.Component {
     caseDefault(button){
       switch(button){
         case 'AC':
-          this.clearResult(button);
+          this.setState(this.defaultState);
           break;
 
         case '.':
           if(this.state.periodPressed === true){
             this.handleDontChange(button)
           } else {
-            this.setState({
-              result: this.state.result + '.',
-              periodPressed: true
-            })
+            this.setState({result: this.state.result + '.', periodPressed: true })
           }
         break;
 
@@ -139,9 +134,7 @@ class App extends React.Component {
           break;
 
         default:
-          this.setState({
-            result: this.state.result + button
-          })
+          this.setState({ result: this.state.result + button })
         break;
       }
   }
@@ -163,15 +156,9 @@ class App extends React.Component {
   plusMinusPressed(){
     if(this.state.positive === true) {
       if(this.state.result === 0){
-        this.setState({
-          positive: false,
-          result: '-'
-        })
+        this.setState({ positive: false,result: '-' })
       } else {
-        this.setState({
-          positive: false,
-          result: '-' + this.state.result
-        })
+        this.setState({ positive: false, result: '-' + this.state.result })
       }
     } else {
         if(this.state.result === '-'){
@@ -187,21 +174,16 @@ class App extends React.Component {
 
   pressPercentButton(){
     if(this.state.result < 100){
-      this.setState({
-        result: eval(this.state.result / 100) + '',
-        periodPressed: true
-      })
+      this.setState({ result: eval(this.state.result / 100) + '', periodPressed: true })
     } else {
-       this.setState({
-        result: eval(this.state.result / 100) + ''
-      })
+       this.setState({ result: eval(this.state.result / 100) + ''})
     }
   };
 
   handleDontChange(button) {
     switch(button){
       case 'AC':
-        this.clearResult();
+        this.setState(this.defaultState)
         break;
 
       case 'negative':
@@ -215,15 +197,11 @@ class App extends React.Component {
       case '=':
       case '%':
       case '.':
-        this.setState({
-          result: this.state.result
-        });
+        this.setState({ result: this.state.result });
         break;
 
       default:
-        this.setState({
-          result: this.state.result + button
-        });
+        this.setState({ result: this.state.result + button });
         break;
     }
   };
