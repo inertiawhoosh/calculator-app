@@ -30,3 +30,4 @@ Run
 ## Updates
 
 6/16/2019 - Users can no longer have a number with more than one period. 
+6/20/2019 - Refactored code to make clearResult() more DRY
